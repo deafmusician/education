@@ -98,6 +98,8 @@ int main()
     return 0;
 }*/
 
+/*new komment*/
+
 struct Node
 {
     int data;
