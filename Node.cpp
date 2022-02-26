@@ -1,103 +1,5 @@
 #include <iostream>
 
-/*struct Node
-{
-    int data;
-    Node *next;
-};
-
-class List
-{
-
-private:
-
-    Node *head;
-
-public:
-
-    List()
-    {
-        head = NULL;
-    }
-
-    void addNode(int a)
-    {
-        Node *nd = new Node;
-        nd -> data = a;
-        nd -> next = 0;
-        if(head == NULL)
-        {
-            head = nd;
-        }
-            else
-            {
-                Node *current = head;
-                while (current->next != NULL)
-                {
-                    current = current->next;
-                    current->next = nd;
-                }
-                
-            }
-
-    }
-
-    void printNode()
-    {
-        Node *current = head;
-        while (current != NULL)
-        {
-            std::cout << current->data << std::endl;
-            current = current->next;
-        }
-    }
-};
-
-int main()
-{
-    List myList;
-
-    myList.addNode(25);
-    myList.addNode(30);
-    myList.addNode(80);
-    myList.addNode(5);
-
-    myList.printNode();
-
-    return 0;
-} */
-/*
-struct SaveData
-{
-    int data;
-};
-
-int input()
-{
-    std::cout << "Enter a random Nuber" << std::endl;
-    int a;
-    std::cin >> a;
-    return a;
-}
-
-void Doppelt(SaveData *ptr)
-{
-    ptr->data = ptr->data * 2;
-}
-
-int main()
-{
-    SaveData *save = new SaveData;
-    save->data = input();
-
-    Doppelt(save);
-
-    std::cout << save->data << std::endl;
-    delete save;
-
-    return 0;
-}*/
-
 /*new komment*/
 
 struct Node
@@ -107,6 +9,7 @@ struct Node
 };
 
 Node *head = nullptr;
+
 /*
 int counter(Node *const node)
 {
@@ -122,6 +25,7 @@ int counter(Node *const node)
     }
     return a;
 }*/
+
 Node* einCycle(Node *node)
 {
         Node *save = node;
