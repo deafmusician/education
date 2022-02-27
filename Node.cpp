@@ -2,6 +2,7 @@
 
 /*new komment*/
 
+
 struct Node
 {
     int data;
