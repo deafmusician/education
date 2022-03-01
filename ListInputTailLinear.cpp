@@ -52,6 +52,18 @@ void listPrint(List &list)
     }
 }
 
+// удаление листа
+
+void deleteList(List &list)
+{
+    while(list.head)
+    {
+        list.tail = list.head->next;
+        delete list.head;
+        list.head = list.tail;
+    }
+}
+
 int main()
 {
     List list_a, list_b;
@@ -66,5 +78,7 @@ int main()
     newNode(list_b);
     newNode(list_b);
     listPrint(list_b);
+    deleteList(list_a);
+    deleteList(list_b);
     return 0;
 }
