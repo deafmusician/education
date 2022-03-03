@@ -41,14 +41,11 @@ void newNode(List &list)
 
 void listPrint(List &list)
 {
-    if(list.head)
+    Node *print = list.head;
+    while(print != nullptr)
     {
-        Node *print = list.head;
-        while(print != 0)
-        {
-            std::cout << print->data << std::endl;
-            print = print->next;
-        }
+        std::cout << print->data << std::endl;
+        print = print->next;
     }
 }
 
