@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.18)
 project(temp LANGUAGES CXX C)
 
-add_executable(temp bidirectionalList.cpp)
+add_executable(temp vektor.cpp)
 set_target_properties(temp
     PROPERTIES
         CXX_STANDARD 14
