@@ -1,6 +1,7 @@
 #include <iostream>
 //для функции свап при удалении элемента
 #include <algorithm>
+#include <string>
 
 struct Vektor
 {
@@ -13,89 +14,70 @@ struct Vektor
 
 void input(Vektor *vektor)
 {
-    //для контроля еще с наработок. если то в функции не нужны
-    if(vektor->input < vektor->vlong)
-    {
-        int in = 0;
         std::cout << "Enter a Data" << std::endl;
-        std::cin >> in;
-        //кол. записей есть индекс массива
-        vektor->mass[vektor->input] = in;
+        std::cin >> vektor->mass[vektor->input];
         ++vektor->input;
-    }
-    //для контроля
-    else
-    {
-        std::cout << "Vektor is full" << std::endl;
-    }
 }
 
 void upControl(Vektor *vektor)
 {
     //поменять местами с если
-    if(!vektor->mass)
-        {
-            vektor->vlong = 5;
-            vektor->mass = new int[5];
-            input(vektor);
-        }
-    //удвоение массива
-    if(vektor->input == vektor->vlong)
-        {
-            int *newmass = new int [vektor->vlong + vektor->input];
-            vektor->vlong = vektor->vlong + vektor->input;
-            for(int copy = 0; copy < vektor->input; ++copy)
-                newmass[copy] = vektor->mass[copy];
-            delete vektor->mass;
-            vektor->mass = newmass;
-            input(vektor);
-        }
+    if(vektor->mass)
+    {
+        //удвоение массива
+        if(vektor->input == vektor->vlong)
+            {
+                int *newmass = new int [vektor->vlong + vektor->input];
+                vektor->vlong = vektor->vlong + vektor->input;
+                for(int copy = 0; copy < vektor->input; ++copy)
+                    newmass[copy] = vektor->mass[copy];
+                delete vektor->mass;
+                vektor->mass = newmass;
+            }
+        input(vektor);
+    }
     else
     {
-        input(vektor);
+        vektor->vlong = 5;
+        vektor->mass = new int[5];
+        upControl(vektor);
     }
 }
 
 void deleteData(Vektor *vektor)
 {
     int del = 0;
-    int index = 0;
     std::cout << "Enter a delete Nummber" << std::endl;
     std::cin >> del;
-    while (index != vektor->input)
-        {
-            if(vektor->mass[index] == del)
-                {
-                    del = vektor->mass[vektor->input - 1];
-                    std::swap(vektor->mass[index],del);
-                    --vektor->input;
-                    return;
-                }
-            ++index;
-        }
+    for(int index = vektor->input - 1; index > 0; --index)
+        if(vektor->mass[index] == del)
+            {
+                del = vektor->mass[vektor->input - 1];
+                std::swap(vektor->mass[index],del);
+                --vektor->input;
+                return;
+            }
     std::cout << "The Data is not fundet" << std::endl;
 }
 
 void downControl(Vektor *vektor)
 {
-    if(!vektor->mass)
+    if(vektor->mass)
     {
-        std::cout << "Vektor is emply" << std::endl;
-        return;
-    }
-    if(vektor->input == (vektor->vlong / 2))
-    {
+        if(vektor->input == (vektor->vlong / 2))
+        {
             int *newmass = new int [vektor->input];
             vektor->vlong = vektor->input;
             for(int copy = 0; copy < vektor->input; ++copy)
-                newmass[copy] = vektor->mass[copy];
-            delete vektor->mass;
-            vektor->mass = newmass;
-            deleteData(vektor);
+            newmass[copy] = vektor->mass[copy];
+                delete vektor->mass;
+                vektor->mass = newmass;
+        }
+        deleteData(vektor);
     }
     else
     {
-        deleteData(vektor);
+        std::cout << "Vektor is emply" << std::endl;
     }
 }
 
